@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090b18">
+<title>Walters Games</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700;800&display=swap');
+:root{color-scheme:dark;--bg:#090b18;--panel:#11152a;--line:#293052;--cyan:#62f5e5;--purple:#a78bfa;--text:#f4f5ff;--muted:#9ba3c7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
+#pixels{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.65}
+.wrap{width:min(1100px,calc(100% - 40px));margin:auto}
+header{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.04em}.brand-mark{width:28px;height:28px;background:var(--cyan);box-shadow:5px 5px 0 var(--purple);image-rendering:pixelated;clip-path:polygon(0 0,70% 0,70% 20%,100% 20%,100% 100%,20% 100%,20% 70%,0 70%)}
+nav{display:flex;gap:26px}nav a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:600}nav a:hover{color:var(--cyan)}
+.hero{text-align:center;padding:100px 0 72px;position:relative}.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid #62f5e544;border-radius:4px;color:var(--cyan);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:#62f5e50b}
+.dot{width:6px;height:6px;background:var(--cyan);box-shadow:0 0 12px var(--cyan);animation:pulse 1.8s infinite}
+h1{font-family:'Press Start 2P',monospace;font-size:clamp(27px,5.4vw,59px);line-height:1.55;letter-spacing:-.06em;margin:28px 0 18px;text-shadow:4px 4px 0 #493b91,0 0 28px #a78bfa40}
+h1 span{color:var(--cyan)}.sub{max-width:520px;margin:0 auto;color:var(--muted);line-height:1.7;font-size:15px}
+.hero-actions{display:flex;justify-content:center;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:4px;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.04em;transition:transform .18s,box-shadow .18s}
+.btn:hover{transform:translateY(-3px)}.primary{background:var(--cyan);color:#071313;box-shadow:4px 4px 0 #328f8c}.secondary{border:1px solid var(--line);color:var(--text);background:#11152acc}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:20px}.section-head h2{font-size:18px;margin:0 0 7px}.section-head p{margin:0;color:var(--muted);font-size:12px}
+.search{width:min(240px,45vw);padding:11px 13px;border:1px solid var(--line);border-radius:4px;background:#10142a;color:var(--text);outline:none}.search:focus{border-color:var(--cyan)}
+.games{padding:12px 0 90px}.empty{border:1px dashed #465078;border-radius:8px;background:linear-gradient(135deg,#11152acc,#101327aa);padding:48px 20px;text-align:center}
+.empty-icon{font-size:30px;margin-bottom:16px;filter:drop-shadow(0 0 12px #a78bfa66)}.empty h3{margin:0 0 9px;font-size:16px}.empty p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
+footer{border-top:1px solid #ffffff12;padding:22px 0;color:#747d9f;font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@keyframes pulse{50%{opacity:.35;transform:scale(.7)}}
+@media(max-width:600px){header{height:68px}nav{gap:13px}nav a{font-size:11px}.hero{padding:76px 0 58px}.section-head{align-items:stretch;flex-direction:column}.search{width:100%}.empty{padding:38px 18px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="pixels" aria-hidden="true"></canvas>
+<div class="wrap">
+<header>
+  <div class="brand"><span class="brand-mark"></span><span>WALTERS GAMES</span></div>
+  <nav aria-label="Main navigation"><a href="#games">Games</a><a href="#about">About</a></nav>
+</header>
+<main>
+<section class="hero" id="about">
+  <div class="eyebrow"><span class="dot"></span> YOUR NEXT HIGH SCORE STARTS HERE</div>
+  <h1>WALTERS<br><span>GAMES</span></h1>
+  <p class="sub">A little corner of the internet for big-game energy. Pick a game, jump in, and chase that high score.</p>
+  <div class="hero-actions"><a class="btn primary" href="#games">EXPLORE GAMES&nbsp; ↓</a><a class="btn secondary" href="#about">THE ARCADE</a></div>
+</section>
+<section class="games" id="games">
+  <div class="section-head"><div><h2>THE ARCADE</h2><p>Choose your next adventure.</p></div><input class="search" id="search" type="search" placeholder="Search games..." aria-label="Search games"></div>
+  <div class="empty" id="empty"><div class="empty-icon">▣</div><h3>THE ARCADE IS LOADING</h3><p>Games will show up here when they're added.<br>Check back soon for your next favorite.</p></div>
+</section>
+</main>
+<footer><span>© <span id="year"></span> WALTERS GAMES</span><span>INSERT COIN · HAVE FUN</span></footer>
+</div>
+<script>
+(() => {
+ const canvas=document.getElementById('pixels'),ctx=canvas.getContext('2d');
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let w=0,h=0,dots=[];
+ function resize(){const dpr=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);const count=Math.min(85,Math.floor(w*h/15000));dots=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,size:2+Math.random()*3,speed:.12+Math.random()*.38,phase:Math.random()*6.28, hue:Math.random()>.55?'#62f5e5':'#a78bfa'}));}
+ function draw(){ctx.clearRect(0,0,w,h);for(const p of dots){const glow=.25+.45*(.5+.5*Math.sin(p.phase));ctx.globalAlpha=glow;ctx.fillStyle=p.hue;ctx.fillRect(Math.round(p.x),Math.round(p.y),p.size,p.size);if(!reduce){p.y-=p.speed;p.phase+=.018;if(p.y< -8){p.y=h+8;p.x=Math.random()*w;}}}ctx.globalAlpha=1;if(!reduce)requestAnimationFrame(draw);}
+ resize();draw();addEventListener('resize',()=>{resize();if(!reduce)draw()});
+ document.getElementById('year').textContent=new Date().getFullYear();
+ document.getElementById('search').addEventListener('input',()=>{document.getElementById('empty').style.opacity='1';});
+})();
+</script>
+</body>
+</html>
