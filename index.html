@@ -23,11 +23,10 @@
 header{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #fff5}
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.02em;font-size:15px}.brand-mark{width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff4b2 0 9%,#ffb078 10% 37%,#f47770 38% 68%,#b94e67 69%);box-shadow:0 0 22px #ff9b7966;position:relative}.brand-mark:after{content:'';position:absolute;width:9px;height:5px;background:#8dbb83;border-radius:100% 0 100% 0;top:-2px;left:13px;transform:rotate(-25deg)}
 nav{display:flex;gap:24px}nav a{color:#fff0e4;text-decoration:none;font-size:13px;font-weight:700}nav a:hover{color:#fff}
-.hero{min-height:350px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+.top-search{display:flex;justify-content:center;padding:30px 0 0;position:relative;z-index:2}.search{width:min(680px,100%);padding:19px 24px;border:1px solid #ffffff70;border-radius:999px;background:#063f50c9;color:var(--ink);font-size:17px;outline:none;backdrop-filter:blur(10px);box-shadow:0 10px 35px #002e3b44}.search::placeholder{color:#f0ddd4}.search:focus{border-color:#ffd4a4;background:#063f50e8}.hero{min-height:310px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
 h1{font-family:Pacifico,cursive;font-size:clamp(54px,9vw,94px);line-height:1.12;font-weight:400;margin:0;color:#fff9ed;text-shadow:0 4px 0 #b85f68,0 8px 28px #713d5977}
 .games{padding:20px 0 85px}
-.section-head{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:20px}.section-head h2{font-size:20px;margin:0;color:#fff8ed}
-.search{width:min(240px,45vw);padding:12px 16px;border:1px solid #ffffff55;border-radius:99px;background:#063f50aa;color:var(--ink);outline:none;backdrop-filter:blur(8px)}.search::placeholder{color:#f0ddd4}.search:focus{border-color:#ffd4a4;background:#063f50cc}
+.section-head{display:flex;align-items:center;justify-content:flex-start;gap:18px;margin-bottom:20px}.section-head h2{font-size:20px;margin:0;color:#fff8ed}
 .game-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}
 .game-card{display:block;padding:21px;border:1px solid #ffffff45;border-radius:15px;background:#073f50a8;color:var(--ink);text-decoration:none;backdrop-filter:blur(10px);box-shadow:0 8px 25px #002e3b24;transition:transform .2s,border-color .2s,background .2s}
 .game-card:hover{transform:translateY(-5px);border-color:#ffd3a4;background:#073f50d9}
@@ -35,7 +34,7 @@ h1{font-family:Pacifico,cursive;font-size:clamp(54px,9vw,94px);line-height:1.12;
 #noResults{display:none;color:#fff8ed;font-size:13px;padding:18px 2px}
 footer{border-top:1px solid #ffffff40;padding:18px 0;color:#fff0e4;font-size:11px}
 @keyframes wave{from{transform:translateX(-2%) rotate(-2deg)}to{transform:translateX(2%) rotate(1deg)}}
-@media(max-width:600px){header{height:68px}nav{gap:14px}nav a{font-size:11px}.hero{min-height:300px}.section-head{align-items:stretch;flex-direction:column}.search{width:100%}.palms{height:430px}}
+@media(max-width:600px){header{height:68px}nav{gap:14px}nav a{font-size:11px}.top-search{padding-top:22px}.search{font-size:15px;padding:17px 20px}.hero{min-height:270px}.palms{height:430px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
@@ -58,9 +57,10 @@ footer{border-top:1px solid #ffffff40;padding:18px 0;color:#fff0e4;font-size:11p
   <nav aria-label="Main navigation"><a href="#games">Games</a></nav>
 </header>
 <main>
+<div class="top-search"><input class="search" id="search" type="search" placeholder="Search games..." aria-label="Search games"></div>
 <section class="hero"><h1>Grapefruit Games</h1></section>
 <section class="games" id="games">
-  <div class="section-head"><h2>Games</h2><input class="search" id="search" type="search" placeholder="Search games..." aria-label="Search games"></div>
+  <div class="section-head"><h2>Games</h2></div>
   <div class="game-grid" id="gameGrid">
 <a class="game-card" target="_blank" rel="noopener noreferrer" href="1.html" data-name="1 divide numbers puzzle"><div class="glyph">🔢</div><h3>1</h3></a>
 <a class="game-card" target="_blank" rel="noopener noreferrer" href="1-on-1-soccer.html" data-name="1 on 1 soccer football"><div class="glyph">⚽</div><h3>1 on 1 Soccer</h3></a>
