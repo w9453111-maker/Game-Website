@@ -1,14 +1,59 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>1v1.LOL | Walters Games</title>
-<style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#090b18;color:#f4f5ff;font-family:system-ui,sans-serif}
-.top{height:54px;display:flex;align-items:center;gap:18px;padding:0 18px;background:#11152a;border-bottom:1px solid #293052}
-a{color:#62f5e5;text-decoration:none;font-weight:700}.name{font-weight:800;letter-spacing:.08em}
-main{height:calc(100% - 54px);padding:0}iframe,object,embed{display:block;width:100%;height:100%;border:0}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+      /* Buton stili kaldırıldı, gereksiz kod temizlendi */
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/n-101-1/1@main/style.css">
+    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/UnityProgress.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/2.7.js"></script>
+    <script type="text/javascript">
+      var gameInstance;
 
-</style>
-</head>
-<body><header class="top"><a href="index.html">← WALTERS GAMES</a><span class="name">1v1.LOL</span></header><main><div id="gameContainer" style="width:100%;height:100%"></div><script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/UnityProgress.js"></script><script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/2.7.js"></script><script>window.onload=()=>{if(window.UnityLoader){window.gameInstance=UnityLoader.instantiate("gameContainer","https://cdn.jsdelivr.net/gh/n-101-1/1@main/2.7.json",{onProgress:window.UnityProgress});}else{document.getElementById("gameContainer").innerHTML="<p style='padding:24px'>Game loader did not load. Try refreshing.</p>";}}</script></main></body></html>
+      window.onload = function () {
+        gameInstance = UnityLoader.instantiate("gameContainer", "https://cdn.jsdelivr.net/gh/n-101-1/1@main/2.7.json", {
+          onProgress: UnityProgress,
+          Module: {
+            onRuntimeInitialized: function () {
+              UnityProgress(gameInstance, "complete");
+            },
+          },
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: 100%; height: 100%; margin: auto;"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase-auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase-firestore.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1login.js?v=2"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firestore.js"></script>
+
+    <script>
+      initializeFireBase();
+
+      function showAds() {
+        console.log("show ads");
+      }
+      function requestNewAd() {
+        // Show video ad
+        unityAdFinishedCallback();
+      }
+      function unityAdFinishedCallback() {
+        try {
+          if (gameInstance) gameInstance.SendMessage("AdsManager", "OnWebCallback");
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    </script>
+  </body>
+</html>
