@@ -20,10 +20,10 @@
 .palms{position:absolute;top:0;left:0;width:100%;height:min(620px,80vh)}
 #pixels{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.3}
 .wrap{width:min(1120px,calc(100% - 40px));margin:auto;position:relative;z-index:1}
-header{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #fff5}
+header{height:78px;display:flex;align-items:center;justify-content:space-between;gap:22px;border-bottom:1px solid #fff5}
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.02em;font-size:15px}.brand-mark{width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff4b2 0 9%,#ffb078 10% 37%,#f47770 38% 68%,#b94e67 69%);box-shadow:0 0 22px #ff9b7966;position:relative}.brand-mark:after{content:'';position:absolute;width:9px;height:5px;background:#8dbb83;border-radius:100% 0 100% 0;top:-2px;left:13px;transform:rotate(-25deg)}
 nav{display:flex;gap:24px}nav a{color:#fff0e4;text-decoration:none;font-size:13px;font-weight:700}nav a:hover{color:#fff}
-.top-search{display:flex;justify-content:center;padding:30px 0 0;position:relative;z-index:2}.search{width:min(680px,100%);padding:19px 24px;border:1px solid #ffffff70;border-radius:999px;background:#063f50c9;color:var(--ink);font-size:17px;outline:none;backdrop-filter:blur(10px);box-shadow:0 10px 35px #002e3b44}.search::placeholder{color:#f0ddd4}.search:focus{border-color:#ffd4a4;background:#063f50e8}.hero{min-height:310px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+.top-search{display:flex;justify-content:center;flex:1;min-width:100px;position:relative;z-index:2}.search{width:min(440px,100%);padding:10px 18px;border:1px solid #ffffff70;border-radius:999px;background:#063f50c9;color:var(--ink);font-size:14px;outline:none;backdrop-filter:blur(10px);box-shadow:0 6px 20px #002e3b33}.search::placeholder{color:#f0ddd4}.search:focus{border-color:#ffd4a4;background:#063f50e8}.hero{min-height:310px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
 h1{font-family:Pacifico,cursive;font-size:clamp(54px,9vw,94px);line-height:1.12;font-weight:400;margin:0;color:#fff9ed;text-shadow:0 4px 0 #b85f68,0 8px 28px #713d5977}
 .games{padding:20px 0 85px}
 .section-head{display:flex;align-items:center;justify-content:flex-start;gap:18px;margin-bottom:20px}.section-head h2{font-size:20px;margin:0;color:#fff8ed}
@@ -34,7 +34,7 @@ h1{font-family:Pacifico,cursive;font-size:clamp(54px,9vw,94px);line-height:1.12;
 #noResults{display:none;color:#fff8ed;font-size:13px;padding:18px 2px}
 footer{border-top:1px solid #ffffff40;padding:18px 0;color:#fff0e4;font-size:11px}
 @keyframes wave{from{transform:translateX(-2%) rotate(-2deg)}to{transform:translateX(2%) rotate(1deg)}}
-@media(max-width:600px){header{height:68px}nav{gap:14px}nav a{font-size:11px}.top-search{padding-top:22px}.search{font-size:15px;padding:17px 20px}.hero{min-height:270px}.palms{height:430px}}
+@media(max-width:600px){header{height:68px;gap:9px}.brand{gap:7px;font-size:10px}.brand-mark{width:25px;height:25px}nav{gap:8px}nav a{font-size:10px}.top-search{min-width:70px}.search{font-size:11px;padding:9px 10px}.search::placeholder{font-size:10px}.hero{min-height:270px}.palms{height:430px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
@@ -54,10 +54,10 @@ footer{border-top:1px solid #ffffff40;padding:18px 0;color:#fff0e4;font-size:11p
 <div class="wrap">
 <header>
   <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>GRAPEFRUIT GAMES</span></div>
+  <div class="top-search"><input class="search" id="search" type="search" placeholder="Search games..." aria-label="Search games"></div>
   <nav aria-label="Main navigation"><a href="#games">Games</a></nav>
 </header>
 <main>
-<div class="top-search"><input class="search" id="search" type="search" placeholder="Search games..." aria-label="Search games"></div>
 <section class="hero"><h1>Grapefruit Games</h1></section>
 <section class="games" id="games">
   <div class="section-head"><h2>Games</h2></div>
