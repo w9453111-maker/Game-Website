@@ -4,95 +4,82 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f18b72">
-<meta name="description" content="Grapefruit Games — sunny skies, ocean waves, and games worth diving into.">
 <title>Grapefruit Games</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Pacifico&display=swap');
-:root{color-scheme:dark;--ink:#fff8ed;--muted:#f8d9cb;--coral:#ff947e;--peach:#ffc49b;--sea:#126d83;--deep:#073b52;--sand:#f3c18e}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:#073b52;color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;overflow-x:hidden}
-#pixels{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.42}
-.wrap{width:min(1120px,calc(100% - 40px));margin:auto;position:relative;z-index:1}
-header{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #fff4;position:relative;z-index:2}
-.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.02em;font-size:15px}.brand-mark{width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff4b2 0 9%,#ffb078 10% 37%,#f47770 38% 68%,#b94e67 69%);box-shadow:0 0 22px #ff9b7966;position:relative}.brand-mark:after{content:'';position:absolute;width:9px;height:5px;background:#8dbb83;border-radius:100% 0 100% 0;top:-2px;left:13px;transform:rotate(-25deg)}
-nav{display:flex;gap:26px}nav a{color:#ffe1d1;text-decoration:none;font-size:13px;font-weight:700}nav a:hover{color:#fff}
-.hero{min-height:555px;margin:24px 0 55px;border:1px solid #fff5;border-radius:26px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(180deg,#f5a28e 0%,#f58c83 33%,#e77e83 48%,#438e9b 70%,#0c536a 100%);box-shadow:0 24px 70px #001f3444}
-.hero:before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#ffdab033 0%,transparent 48%,#073b5233 100%);pointer-events:none}
-.sun{position:absolute;width:180px;height:180px;border-radius:50%;top:76px;left:50%;transform:translateX(-50%);background:linear-gradient(180deg,#fff2b7,#ffd18e 65%,#ffad88);box-shadow:0 0 65px 22px #ffd28c55}
-.horizon{position:absolute;left:0;right:0;top:55%;height:2px;background:#ffe1b988;box-shadow:0 0 22px #fff1b8}
-.ocean{position:absolute;left:0;right:0;top:55%;height:34%;background:linear-gradient(180deg,#267f91,#125d75 55%,#0a4b65);overflow:hidden}
-.ocean:before,.ocean:after{content:'';position:absolute;left:-10%;width:120%;height:50px;border-top:2px solid #f6d4b288;border-radius:50%;transform:rotate(-2deg);animation:wave 9s ease-in-out infinite alternate}
+:root{color-scheme:dark;--ink:#fff8ed;--muted:#e8d8cf}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{position:relative;margin:0;min-height:100vh;background:#0c536a;color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;overflow-x:hidden}
+.beach-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:linear-gradient(180deg,#f5a28e 0%,#f58c83 22%,#e77e83 37%,#438e9b 54%,#12677e 72%,#f0c08e 91%,#dca071 100%)}
+.sun{position:absolute;width:clamp(120px,18vw,190px);height:clamp(120px,18vw,190px);border-radius:50%;top:105px;left:50%;transform:translateX(-50%);background:linear-gradient(180deg,#fff2b7,#ffd18e 65%,#ffad88);box-shadow:0 0 65px 22px #ffd28c55}
+.ocean{position:absolute;top:43%;left:0;right:0;height:37%;background:linear-gradient(180deg,#267f91,#125d75 55%,#0a4b65);overflow:hidden}
+.ocean:before,.ocean:after{content:'';position:absolute;left:-10%;width:120%;height:50px;border-top:2px solid #f6d4b288;border-radius:50%;animation:wave 9s ease-in-out infinite alternate}
 .ocean:before{top:28%;box-shadow:0 -13px 0 -11px #fff8d477,0 16px 0 -14px #fff8d477}
 .ocean:after{top:65%;transform:rotate(2deg);animation-delay:-4s;opacity:.65}
-.sun-reflection{position:absolute;top:4%;left:calc(50% - 38px);width:76px;height:100%;background:linear-gradient(180deg,#ffe6a899,transparent);filter:blur(14px);opacity:.6}
-.sand{position:absolute;left:-5%;right:-5%;bottom:-65px;height:37%;background:linear-gradient(180deg,#f2c28f,#dca071);border-radius:50% 50% 0 0/20% 20% 0 0;transform:rotate(-1deg)}
-.sand:before{content:'';position:absolute;left:0;right:0;top:10px;height:2px;background:#fff0d788;transform:rotate(1deg)}
-.scene-palms{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.hero-copy{position:relative;z-index:1;margin-top:-60px;padding:30px 20px;text-shadow:0 2px 18px #6b394b66}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid #fff8;border-radius:99px;color:#fff9ed;background:#fff2;font-size:10px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;backdrop-filter:blur(8px)}
-.dot{width:7px;height:7px;border-radius:50%;background:#fff2b7;box-shadow:0 0 12px #fff2b7;animation:pulse 1.8s infinite}
-h1{font-family:Pacifico,cursive;font-size:clamp(54px,9vw,100px);line-height:1.08;font-weight:400;letter-spacing:.01em;margin:22px 0 12px;color:#fff9ed;text-shadow:0 4px 0 #b85f68,0 8px 28px #713d5977}
-.sub{max-width:500px;margin:0 auto;color:#fff4e8;line-height:1.7;font-size:15px;font-weight:600}
-.hero-actions{display:flex;justify-content:center;gap:12px;margin-top:26px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 19px;border-radius:99px;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.04em;transition:transform .18s,box-shadow .18s}
-.btn:hover{transform:translateY(-3px)}.primary{background:#fff0d8;color:#864e55;box-shadow:0 5px 0 #b66c70}.secondary{border:1px solid #fff9;color:#fff8ed;background:#ffffff20;backdrop-filter:blur(8px)}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:20px}.section-head h2{font-family:Pacifico,cursive;font-size:31px;font-weight:400;margin:0 0 2px;color:#ffe4c6}.section-head p{margin:0;color:#c8e3e2;font-size:12px}
-.search{width:min(240px,45vw);padding:12px 16px;border:1px solid #ffffff35;border-radius:99px;background:#ffffff14;color:var(--ink);outline:none;backdrop-filter:blur(8px)}.search::placeholder{color:#d5e4df}.search:focus{border-color:#ffd4a4;background:#ffffff22}
-.games{padding:8px 0 75px}.game-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}.game-card{display:block;padding:21px;border:1px solid #ffffff2b;border-radius:17px;background:linear-gradient(145deg,#ffffff1c,#ffffff0b);color:var(--ink);text-decoration:none;backdrop-filter:blur(12px);box-shadow:0 8px 25px #002e3b24;transition:transform .2s,border-color .2s,background .2s}.game-card:hover{transform:translateY(-5px);border-color:#ffd3a4;background:linear-gradient(145deg,#ffffff2c,#ffffff12)}.game-card .glyph{font-size:27px;margin-bottom:13px;filter:drop-shadow(0 3px 6px #001e3344)}.game-card h3{font-size:14px;margin:0 0 7px}.game-card p{font-size:12px;color:#cce2df;margin:0;line-height:1.6}
-#noResults{display:none;color:#cce2df;font-size:13px;padding:18px 2px}
-footer{border-top:1px solid #ffffff2b;padding:22px 0;color:#c5dcd8;font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@keyframes pulse{50%{opacity:.4;transform:scale(.75)}}@keyframes wave{from{transform:translateX(-2%) rotate(-2deg)}to{transform:translateX(2%) rotate(1deg)}}
-@media(max-width:600px){header{height:68px}nav{gap:14px}nav a{font-size:11px}.hero{min-height:490px;margin-top:16px;border-radius:19px}.sun{width:135px;height:135px;top:80px}.hero-copy{margin-top:-25px}.scene-palms{opacity:.82}.section-head{align-items:stretch;flex-direction:column}.search{width:100%}.sand{height:32%}}
+.reflection{position:absolute;top:0;left:calc(50% - 45px);width:90px;height:100%;background:linear-gradient(180deg,#ffe6a899,transparent);filter:blur(15px);opacity:.6}
+.sand{position:absolute;left:-5%;right:-5%;bottom:0;height:34%;background:linear-gradient(180deg,#f2c28f,#dca071);border-radius:50% 50% 0 0/9% 9% 0 0}
+.palms{position:absolute;top:0;left:0;width:100%;height:min(620px,80vh)}
+#pixels{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.3}
+.wrap{width:min(1120px,calc(100% - 40px));margin:auto;position:relative;z-index:1}
+header{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #fff5}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.02em;font-size:15px}.brand-mark{width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff4b2 0 9%,#ffb078 10% 37%,#f47770 38% 68%,#b94e67 69%);box-shadow:0 0 22px #ff9b7966;position:relative}.brand-mark:after{content:'';position:absolute;width:9px;height:5px;background:#8dbb83;border-radius:100% 0 100% 0;top:-2px;left:13px;transform:rotate(-25deg)}
+nav{display:flex;gap:24px}nav a{color:#fff0e4;text-decoration:none;font-size:13px;font-weight:700}nav a:hover{color:#fff}
+.hero{min-height:350px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+h1{font-family:Pacifico,cursive;font-size:clamp(54px,9vw,94px);line-height:1.12;font-weight:400;margin:0;color:#fff9ed;text-shadow:0 4px 0 #b85f68,0 8px 28px #713d5977}
+.games{padding:20px 0 85px}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:20px}.section-head h2{font-size:20px;margin:0;color:#fff8ed}
+.search{width:min(240px,45vw);padding:12px 16px;border:1px solid #ffffff55;border-radius:99px;background:#063f50aa;color:var(--ink);outline:none;backdrop-filter:blur(8px)}.search::placeholder{color:#f0ddd4}.search:focus{border-color:#ffd4a4;background:#063f50cc}
+.game-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}
+.game-card{display:block;padding:21px;border:1px solid #ffffff45;border-radius:15px;background:#073f50a8;color:var(--ink);text-decoration:none;backdrop-filter:blur(10px);box-shadow:0 8px 25px #002e3b24;transition:transform .2s,border-color .2s,background .2s}
+.game-card:hover{transform:translateY(-5px);border-color:#ffd3a4;background:#073f50d9}
+.game-card .glyph{font-size:27px;margin-bottom:13px}.game-card h3{font-size:14px;margin:0}
+#noResults{display:none;color:#fff8ed;font-size:13px;padding:18px 2px}
+footer{border-top:1px solid #ffffff40;padding:18px 0;color:#fff0e4;font-size:11px}
+@keyframes wave{from{transform:translateX(-2%) rotate(-2deg)}to{transform:translateX(2%) rotate(1deg)}}
+@media(max-width:600px){header{height:68px}nav{gap:14px}nav a{font-size:11px}.hero{min-height:300px}.section-head{align-items:stretch;flex-direction:column}.search{width:100%}.palms{height:430px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
-<canvas id="pixels" aria-hidden="true"></canvas>
-<div class="wrap">
-<header>
-  <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>GRAPEFRUIT GAMES</span></div>
-  <nav aria-label="Main navigation"><a href="#games">Games</a><a href="#about">About</a></nav>
-</header>
-<main>
-<section class="hero" id="about">
-  <div class="sun" aria-hidden="true"></div><div class="horizon" aria-hidden="true"></div>
-  <div class="ocean" aria-hidden="true"><div class="sun-reflection"></div></div><div class="sand" aria-hidden="true"></div>
-  <svg class="scene-palms" viewBox="0 0 1100 555" preserveAspectRatio="none" aria-hidden="true">
+<div class="beach-bg" aria-hidden="true">
+  <div class="sun"></div><div class="ocean"><div class="reflection"></div></div><div class="sand"></div>
+  <svg class="palms" viewBox="0 0 1100 555" preserveAspectRatio="none">
     <g fill="#173e43">
       <path d="M42 555 Q75 410 145 300 Q113 409 95 555Z"/>
       <path d="M143 305 Q75 273 42 216 Q102 237 145 290 Q129 219 151 170 Q169 232 157 291 Q215 234 275 242 Q225 285 159 310 Q224 305 260 342 Q197 331 148 319Z"/>
       <path d="M1040 555 Q1014 407 953 282 Q984 405 997 555Z"/>
       <path d="M954 290 Q891 257 865 201 Q921 220 958 275 Q941 206 966 158 Q981 220 969 279 Q1026 222 1083 235 Q1035 277 972 297 Q1036 299 1070 337 Q1006 323 960 310Z"/>
     </g>
-    <g fill="#244b4b" opacity=".8"><path d="M0 555L0 500Q75 478 153 510L210 555Z"/><path d="M920 555Q1000 485 1100 510V555Z"/></g>
   </svg>
-  <div class="hero-copy">
-    <div class="eyebrow"><span class="dot"></span> SUNSETS · SALT AIR · HIGH SCORES</div>
-    <h1>Grapefruit<br>Games</h1>
-    <p class="sub">Kick back, catch a sunset, and dive into your next favourite game. Your little beachside arcade awaits.</p>
-    <div class="hero-actions"><a class="btn primary" href="#games">EXPLORE GAMES&nbsp; ↓</a><a class="btn secondary" href="#about">BEACH VIBES ☼</a></div>
-  </div>
-</section>
+</div>
+<canvas id="pixels" aria-hidden="true"></canvas>
+<div class="wrap">
+<header>
+  <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>GRAPEFRUIT GAMES</span></div>
+  <nav aria-label="Main navigation"><a href="#games">Games</a></nav>
+</header>
+<main>
+<section class="hero"><h1>Grapefruit Games</h1></section>
 <section class="games" id="games">
-  <div class="section-head"><div><h2>Pick a game</h2><p>Find a game, settle in, and have fun.</p></div><input class="search" id="search" type="search" placeholder="Search games..." aria-label="Search games"></div>
+  <div class="section-head"><h2>Games</h2><input class="search" id="search" type="search" placeholder="Search games..." aria-label="Search games"></div>
   <div class="game-grid" id="gameGrid">
-<a class="game-card" target="_blank" rel="noopener noreferrer" href="1.html" data-name="1 divide numbers puzzle"><div class="glyph">🔢</div><h3>1</h3><p>A number puzzle. Divide matching tiles and reach 1.</p></a>
-<a class="game-card" target="_blank" rel="noopener noreferrer" href="1-on-1-soccer.html" data-name="1 on 1 soccer football"><div class="glyph">⚽</div><h3>1 on 1 Soccer</h3><p>Challenge a friend in a one-on-one soccer match.</p></a>
-<a class="game-card" target="_blank" rel="noopener noreferrer" href="1-on-1-tennis.html" data-name="1 on 1 tennis"><div class="glyph">🎾</div><h3>1 on 1 Tennis</h3><p>Play a quick one-on-one tennis game.</p></a>
-<a class="game-card" target="_blank" rel="noopener noreferrer" href="1v1-double.html" data-name="1v1 double"><div class="glyph">🕹️</div><h3>1v1 Double</h3><p>Launch the alternate 1v1 game page.</p></a>
-<a class="game-card" target="_blank" rel="noopener noreferrer" href="1v1-lol.html" data-name="1v1 lol building simulator"><div class="glyph">🏗️</div><h3>1v1.LOL</h3><p>Building and arena-style multiplayer game.</p></a>
-<a class="game-card" target="_blank" rel="noopener noreferrer" href="1v1-lol-alt.html" data-name="1v1 lol alternate"><div class="glyph">🎮</div><h3>1v1.LOL (Alternate)</h3><p>Alternate launch page.</p></a>
-</div><p id="noResults">No games match that search.</p>
+<a class="game-card" target="_blank" rel="noopener noreferrer" href="1.html" data-name="1 divide numbers puzzle"><div class="glyph">🔢</div><h3>1</h3></a>
+<a class="game-card" target="_blank" rel="noopener noreferrer" href="1-on-1-soccer.html" data-name="1 on 1 soccer football"><div class="glyph">⚽</div><h3>1 on 1 Soccer</h3></a>
+<a class="game-card" target="_blank" rel="noopener noreferrer" href="1-on-1-tennis.html" data-name="1 on 1 tennis"><div class="glyph">🎾</div><h3>1 on 1 Tennis</h3></a>
+<a class="game-card" target="_blank" rel="noopener noreferrer" href="1v1-double.html" data-name="1v1 double"><div class="glyph">🕹️</div><h3>1v1 Double</h3></a>
+<a class="game-card" target="_blank" rel="noopener noreferrer" href="1v1-lol.html" data-name="1v1 lol building simulator"><div class="glyph">🏗️</div><h3>1v1.LOL</h3></a>
+<a class="game-card" target="_blank" rel="noopener noreferrer" href="1v1-lol-alt.html" data-name="1v1 lol alternate"><div class="glyph">🎮</div><h3>1v1.LOL (Alternate)</h3></a>
+</div><p id="noResults">No games found.</p>
 </section>
 </main>
-<footer><span>© <span id="year"></span> GRAPEFRUIT GAMES</span><span>GOOD WAVES · GOOD GAMES · GOOD TIMES</span></footer>
+<footer>© <span id="year"></span> Grapefruit Games</footer>
 </div>
 <script>
 (() => {
  const canvas=document.getElementById('pixels'),ctx=canvas.getContext('2d');
  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  let w=0,h=0,dots=[];
- function resize(){const dpr=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);const count=Math.min(65,Math.floor(w*h/19000));dots=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,size:1+Math.random()*2,speed:.08+Math.random()*.25,phase:Math.random()*6.28}));}
- function draw(){ctx.clearRect(0,0,w,h);for(const p of dots){ctx.globalAlpha=.2+.45*(.5+.5*Math.sin(p.phase));ctx.fillStyle='#ffe8b5';ctx.fillRect(Math.round(p.x),Math.round(p.y),p.size,p.size);if(!reduce){p.y-=p.speed;p.phase+=.018;if(p.y< -8){p.y=h+8;p.x=Math.random()*w;}}}ctx.globalAlpha=1;if(!reduce)requestAnimationFrame(draw);}
+ function resize(){const dpr=Math.min(devicePixelRatio||1,2);w=innerWidth;h=document.body.scrollHeight;canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);const count=Math.min(85,Math.floor(w*h/26000));dots=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,size:1+Math.random()*2,speed:.08+Math.random()*.2,phase:Math.random()*6.28}));}
+ function draw(){ctx.clearRect(0,0,w,h);for(const p of dots){ctx.globalAlpha=.15+.3*(.5+.5*Math.sin(p.phase));ctx.fillStyle='#ffe8b5';ctx.fillRect(Math.round(p.x),Math.round(p.y),p.size,p.size);if(!reduce){p.y-=p.speed;p.phase+=.018;if(p.y< -8){p.y=h+8;p.x=Math.random()*w;}}}ctx.globalAlpha=1;if(!reduce)requestAnimationFrame(draw);}
  resize();draw();addEventListener('resize',()=>{resize();if(!reduce)draw()});
  document.getElementById('year').textContent=new Date().getFullYear();
  document.getElementById('search').addEventListener('input',(e)=>{const q=e.target.value.trim().toLowerCase();let shown=0;document.querySelectorAll('.game-card').forEach(card=>{const match=card.dataset.name.includes(q)||card.innerText.toLowerCase().includes(q);card.style.display=match?'block':'none';if(match)shown++;});document.getElementById('noResults').style.display=shown?'none':'block';});
